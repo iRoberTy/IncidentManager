@@ -62,3 +62,61 @@ const THEME = {
   red: "#ff5252",
   yellow: "#ffc107",
 };
+
+
+function StatCard({ label, value, sub, color, trend }) {
+  return (
+    <div style={{
+      background: THEME.card,
+      border: `1px solid ${THEME.cardBorder}`,
+      borderRadius: 12,
+      padding: "20px 24px",
+      display: "flex",
+      flexDirection: "column",
+      gap: 4,
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <div style={{
+        position: "absolute", top: 0, left: 0, right: 0, height: 3,
+        background: color || THEME.accent,
+        borderRadius: "12px 12px 0 0"
+      }} />
+      <span style={{ color: THEME.muted, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>{label}</span>
+      <span style={{ color: THEME.text, fontSize: 30, fontWeight: 800, lineHeight: 1.1 }}>{value}</span>
+      <span style={{ color: trend === "good" ? THEME.green : trend === "bad" ? THEME.red : THEME.muted, fontSize: 12, fontWeight: 500 }}>{sub}</span>
+    </div>
+  );
+}
+
+function SectionTitle({ children }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+      <div style={{ width: 4, height: 20, background: THEME.accent, borderRadius: 2 }} />
+      <span style={{ color: THEME.text, fontSize: 14, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{children}</span>
+    </div>
+  );
+}
+
+function ChartCard({ title, children, note }) {
+  return (
+    <div style={{
+      background: THEME.card,
+      border: `1px solid ${THEME.cardBorder}`,
+      borderRadius: 12,
+      padding: "20px 20px 12px",
+    }}>
+      <div style={{ color: THEME.text, fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{title}</div>
+      {note && <div style={{ color: THEME.muted, fontSize: 11, marginBottom: 14 }}>{note}</div>}
+      {children}
+    </div>
+  );
+}
+
+const customTooltipStyle = {
+  backgroundColor: "#1a2840",
+  border: "1px solid #2a3f5f",
+  borderRadius: 8,
+  color: THEME.text,
+  fontSize: 12,
+};
