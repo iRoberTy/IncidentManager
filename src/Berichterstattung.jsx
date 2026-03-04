@@ -1,3 +1,8 @@
+import React, { useState } from 'react';
+import { 
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, 
+  Tooltip, Legend, ResponsiveContainer, ReferenceLine, Cell 
+} from 'recharts';
 
 const MONTHS = ["Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez","Jan","Feb","Mär"];
 
